@@ -1,0 +1,67 @@
+Django Models
+ORM - Object Relational Mapping
+
+Django models
+
+Всеки модел е отделна таблица
+Всяка променлова използваща поле от models е колона в тази таблица
+Моделите ни позволяват да не ни се налага писането на low level SQL
+Създаване на модели
+
+Наследяваме models.Model
+Migrations
+
+makemigrations
+migrate
+Други команди
+
+dbshell - отваря конзола, в коятоо можем да пишем SQL
+CTRL + ALT + R - отваря manage.py console
+Migrations and Admin
+
+Django Migrations Advanced
+
+Миграциите ни помагат надграждаме промени в нашите модели
+Както и да можем да пазим предишни стейтове на нашата база
+Команди:
+makemigrations
+migrate
+Връщане до определена миграция - migrate main_app 0001
+Връщане на всички миграции - migrate main_app zero
+showmigrations - показва всички апове и миграциите, които имат
+showmigrations app_name - показва миграциите за един app
+showmigrations --list - showmigrations -l
+squashmigrations app_name migration_to_which_you_want_to_sqash - събира миграциите до определена миграция в една миграция
+sqlmigrate app_name migration_name - дава ни SQL-а на текущата миграция - използваме го, за да проверим дали миграцията е валидна
+makemigrations --empty main_app - прави празна миграция в зададен от нас app
+Custom/Data migrations
+
+Когато например добавим ново поле, искаме да го попълним с данни на база на вече съществуващи полета, използваме data migrations
+
+RunPython
+
+викайки функция през него получаваме достъп до всички апове и техните модели (първи параметър), Scheme Editor (втори параметър)
+добра практика е да подаваме фунцкия и reverse функция, за да можем да връяа безпроблемно миграции
+Scheme Editor - клас, който превръща нашия пайтън код в SQL, ползваме го когато правим create, alter и delete на таблица
+
+използвайки RunPython в 95% от случаите няма да ни се наложи да ползавме Scheme Editor, освен, ако не правим някаква временна таблица индекси или промяна на схемата на таблицата
+Стъпки:
+
+2.1. Създаваме празен файл за миграция: makemigrations --empty main_app - прави празна миграция в зададен от нас app
+
+2.2. Дефиниране на операции - Използваме RunPython за да изпълним data migrations
+
+2.3. Прилагане на промените - migrate
+		
+Пример с временна таблица:
+
+Да приемем, че имате модел с име „Person“ във вашето Django приложение и искате да създадете временна таблица, за да съхранявате някои изчислени данни въз основа на съществуващите данни в таблицата „Person“. В този случай можете да използвате мигриране на данни, за да извършите тази операция:
+
+Create the Data Migration:
+Run the following command to create a data migration:
+
+python manage.py makemigrations your_app_name --empty
+This will create an empty data migration file.
+
+Edit the Data Migration:
+Open the generated data migration file and modify it to use RunPython with a custom Python function that utilizes the SchemaEditor to create a temporary table. Here's an example:
