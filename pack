@@ -2,6 +2,7 @@ import os
 import zipfile
 import datetime
 
+
 def pack():
     # Remove old archive
     for item in os.listdir('.'):
@@ -20,6 +21,7 @@ def pack():
                     zipf.write(file_path, archive_path)
 
     print('Submission created!')
+
 
 if __name__ == '__main__':
     pack()
