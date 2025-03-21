@@ -21,7 +21,7 @@ ORM - Object Relational Mapping
 dbshell - отваря конзола, в коятоо можем да пишем SQL
 CTRL + ALT + R - отваря manage.py console
 
-
+###################################################################################
 ##################         Migrations and Admin
 
 1. Django Migrations Advanced
@@ -94,6 +94,7 @@ class Migration(migrations.Migration):
     operations = [
         migrations.RunPython(create_temporary_table),
     ]
+###################################################################################
 
 3. Django admin
 
@@ -102,6 +103,10 @@ Register model, example:
    @admin.register(OurModelName)
    class OurModelNameAdmin(admin.ModelAdmin):
 	pass
+
+
+###################################################################################
+
 
 4. Admin site customizations
 
