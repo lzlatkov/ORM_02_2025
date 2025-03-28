@@ -759,6 +759,7 @@ author_posts = author.post_set.all()
 4. Q and F
 
   - Използваме Q object, за да правим заявки изискващи по-сложни условия
+  - Uses logical operators like AND (&), OR (I), NOT (~), and XOR (^)
   - Пример:
 
 	```py
